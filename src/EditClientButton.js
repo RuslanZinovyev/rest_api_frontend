@@ -8,10 +8,8 @@ class EditClientButton extends React.Component {
     email: "",
   };
 
-  handleClickEdit = async () => {
-    let id = this.props.clientId;
-    const response = await ReactApi.getClientById(id);
-    this.setState(response.data);
+  handleClickEdit = () => {
+    this.setState(this.props.client);
   };
 
   handleChangeAge = (event) => {
@@ -36,7 +34,9 @@ class EditClientButton extends React.Component {
   };
 
   handleSubmit = () => {
-    ReactApi.updateClient(this.props.clientId, this.state);
+    let id = this.props.client.id;
+    let client = this.state;
+    ReactApi.updateClient(id, client);
   };
 
   render() {
@@ -47,14 +47,14 @@ class EditClientButton extends React.Component {
           type="button"
           className="btn btn-primary btn-sm"
           data-bs-toggle="modal"
-          data-bs-target={"#edit" + this.props.clientId}
+          data-bs-target={"#edit" + this.props.client.id}
         >
           Edit
         </button>
 
         <div
           className="modal fade"
-          id={"edit" + this.props.clientId}
+          id={"edit" + this.props.client.id}
           tabIndex="-1"
           aria-labelledby="exampleModalEdit"
           aria-hidden="true"

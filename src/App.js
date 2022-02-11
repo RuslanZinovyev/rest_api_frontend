@@ -36,7 +36,7 @@ class App extends React.Component {
           <td>{client.email}</td>
           <td>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-              <EditClientButton clientId={client.id} />
+              <EditClientButton client={client} />
               <DeleteClientButton clientId={client.id} />
             </div>
           </td>
