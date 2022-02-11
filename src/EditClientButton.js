@@ -47,14 +47,14 @@ class EditClientButton extends React.Component {
           type="button"
           className="btn btn-primary btn-sm"
           data-bs-toggle="modal"
-          data-bs-target="#edit"
+          data-bs-target={"#edit" + this.props.clientId}
         >
           Edit
         </button>
 
         <div
           className="modal fade"
-          id="edit"
+          id={"edit" + this.props.clientId}
           tabIndex="-1"
           aria-labelledby="exampleModalEdit"
           aria-hidden="true"
