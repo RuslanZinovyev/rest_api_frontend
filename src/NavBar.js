@@ -3,10 +3,10 @@ import React from "react";
 class NabBar extends React.Component {
   render() {
     return (
-      <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <h3>Client Database</h3>
+      <nav className="navbar navbar-light bg-light">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            <h3>Client table</h3>
           </a>
         </div>
       </nav>
