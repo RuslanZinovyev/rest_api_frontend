@@ -4,6 +4,7 @@ import CreateClientButton from "./CreateClientButton";
 import EditClientButton from "./EditClientButton";
 import DeleteClientButton from "./DeleteClientButton";
 import NavBar from "./NavBar";
+import PaginationComponent from "./PaginationComponent";
 
 class App extends React.Component {
   state = {
@@ -59,6 +60,8 @@ class App extends React.Component {
           <tbody>{displayClients}</tbody>
         </table>
         <CreateClientButton />
+        <br />
+        <PaginationComponent />
       </div>
     );
   }
