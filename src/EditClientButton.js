@@ -8,6 +8,14 @@ class EditClientButton extends React.Component {
     email: "",
   };
 
+  clearState = () => {
+    this.setState({
+      age: "",
+      name: "",
+      email: "",
+    });
+  };
+
   handleClickEdit = () => {
     this.setState(this.props.client);
   };
@@ -71,6 +79,7 @@ class EditClientButton extends React.Component {
                   className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
+                  onClick={this.clearState}
                 ></button>
               </div>
               <div className="modal-body">
@@ -108,11 +117,7 @@ class EditClientButton extends React.Component {
                       onChange={this.handleChangeEmail}
                     />
                   </div>
-                  <button
-                    type="submit"
-                    onSubmit={this.handleSubmit}
-                    className="btn btn-primary"
-                  >
+                  <button type="submit" className="btn btn-primary">
                     Update
                   </button>
                 </form>

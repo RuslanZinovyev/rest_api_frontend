@@ -8,6 +8,14 @@ class CreateClientButton extends React.Component {
     email: "",
   };
 
+  clearState = () => {
+    this.setState({
+      age: "",
+      name: "",
+      email: "",
+    });
+  };
+
   handleChangeAge = (event) => {
     const value = event.target.value;
     this.setState({
@@ -64,6 +72,7 @@ class CreateClientButton extends React.Component {
                   className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
+                  onClick={this.clearState}
                 ></button>
               </div>
               <div className="modal-body">
