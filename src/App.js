@@ -9,22 +9,41 @@ import PaginationComponent from "./PaginationComponent";
 class App extends React.Component {
   state = {
     clients: [],
+    totalPages: 0,
+    number: 0,
+    size: 4,
+  };
+
+  onPaginatedClients = (pageClients, number) => {
+    this.setState({
+      clients: pageClients,
+      number: number,
+    });
   };
 
   componentDidMount() {
-    ReactApi.getAllClients().then((response) => {
-      this.setState({
-        clients: response.data,
-      });
-    });
+    ReactApi.getAllClients(this.state.number, this.state.size).then(
+      (response) => {
+        console.log(response);
+        this.setState({
+          clients: response.data.content,
+          totalPages: response.data.totalPages,
+        });
+      }
+    );
   }
 
-  componentDidUpdate() {
-    ReactApi.getAllClients().then((response) => {
-      this.setState({
-        clients: response.data,
-      });
-    });
+  componentDidUpdate(prevState) {
+    if (this.state !== prevState) {
+      ReactApi.getAllClients(this.state.number, this.state.size).then(
+        (response) => {
+          this.setState({
+            clients: response.data.content,
+            totalPages: response.data.totalPages,
+          });
+        }
+      );
+    }
   }
 
   render() {
@@ -61,7 +80,12 @@ class App extends React.Component {
         </table>
         <CreateClientButton />
         <br />
-        <PaginationComponent />
+        <PaginationComponent
+          onPaginatedClients={this.onPaginatedClients}
+          totalPages={this.state.totalPages}
+          size={this.state.size}
+          number={this.state.number}
+        />
       </div>
     );
   }

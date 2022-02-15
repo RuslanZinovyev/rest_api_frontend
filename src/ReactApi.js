@@ -1,7 +1,7 @@
 import axios from "axios";
 
-export const getAllClients = () => {
-  const path = "/api/v1/clients";
+export const getAllClients = (requestedPage = 0, limit = 3) => {
+  const path = `/api/v1/clients?page=${requestedPage}&limit=${limit}`;
 
   return axios.get(path);
 };
