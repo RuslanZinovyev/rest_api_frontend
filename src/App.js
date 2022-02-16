@@ -14,9 +14,8 @@ class App extends React.Component {
     size: 4,
   };
 
-  onPaginatedClients = (pageClients, number) => {
+  onPaginatedClients = (number) => {
     this.setState({
-      clients: pageClients,
       number: number,
     });
   };
@@ -24,7 +23,6 @@ class App extends React.Component {
   componentDidMount() {
     ReactApi.getAllClients(this.state.number, this.state.size).then(
       (response) => {
-        console.log(response);
         this.setState({
           clients: response.data.content,
           totalPages: response.data.totalPages,
@@ -33,8 +31,8 @@ class App extends React.Component {
     );
   }
 
-  componentDidUpdate(prevState) {
-    if (this.state !== prevState) {
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.clients != prevState.clients) {
       ReactApi.getAllClients(this.state.number, this.state.size).then(
         (response) => {
           this.setState({
@@ -83,7 +81,6 @@ class App extends React.Component {
         <PaginationComponent
           onPaginatedClients={this.onPaginatedClients}
           totalPages={this.state.totalPages}
-          size={this.state.size}
           number={this.state.number}
         />
       </div>

@@ -2,18 +2,12 @@ import React from "react";
 import * as ReactApi from "./ReactApi";
 
 class PaginationComponent extends React.Component {
-  loadClients = (requestedPage) => {
-    ReactApi.getAllClients(requestedPage, this.props.size).then((response) => {
-      this.props.onPaginatedClients(response.data.content, requestedPage);
-    });
-  };
-
   onClickNext = () => {
-    this.loadClients(this.props.number + 1);
+    this.props.onPaginatedClients(this.props.number + 1);
   };
 
   onClickPrevious = () => {
-    this.loadClients(this.props.number - 1);
+    this.props.onPaginatedClients(this.props.number - 1);
   };
 
   render() {
