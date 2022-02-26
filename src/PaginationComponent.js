@@ -23,7 +23,11 @@ class PaginationComponent extends React.Component {
               Previous
             </a>
           </li>
-
+          <li class="page-item">
+            <a class="page-link" href="#">
+              {this.props.number + 1}
+            </a>
+          </li>
           <li
             className="page-item"
             className={

@@ -11,7 +11,7 @@ class App extends React.Component {
     clients: [],
     totalPages: 0,
     number: 0,
-    size: 4,
+    size: 5,
   };
 
   onPaginatedClients = (number) => {
